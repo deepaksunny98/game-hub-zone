@@ -18,12 +18,12 @@ const GamesGrid = () => {
 			>
 				{isLoading &&
 					Array.from({ length: 16 }).map((_, index) => (
-						<GameCardContainer>
+						<GameCardContainer key={index}>
 							<GameCardSkeleton key={index} />
 						</GameCardContainer>
 					))}
 				{games.map((game) => (
-					<GameCardContainer>
+					<GameCardContainer key={game.id}>
 						<GameCard
 							key={game.id}
 							game={game}
