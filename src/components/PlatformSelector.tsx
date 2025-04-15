@@ -1,9 +1,14 @@
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import React from "react";
-import usePlatforms from "../hooks/usePlatforms";
+import usePlatforms, { Platforms } from "../hooks/usePlatforms";
 
-const PlatformSelector = () => {
+interface Props {
+	onSelectPlatform: (platform: Platforms) => void;
+	selectedPlatform: Platforms | null;
+}
+
+const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
 	const { data: platforms, error } = usePlatforms();
 	if (error) return null;
 	return (
@@ -12,11 +17,16 @@ const PlatformSelector = () => {
 				as={Button}
 				rightIcon={<ChevronDownIcon />}
 			>
-				Platforms
+				{selectedPlatform?.name || "Platforms"}
 			</MenuButton>
 			<MenuList>
 				{platforms.map((platform) => (
-					<MenuItem key={platform.id}>{platform.name}</MenuItem>
+					<MenuItem
+						key={platform.id}
+						onClick={() => onSelectPlatform(platform)}
+					>
+						{platform.name}
+					</MenuItem>
 				))}
 			</MenuList>
 		</Menu>
