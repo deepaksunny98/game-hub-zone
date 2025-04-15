@@ -3,15 +3,20 @@ import { SimpleGrid, Text } from "@chakra-ui/react";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
+import { Genre } from "../hooks/useGenres";
 
-const GamesGrid = () => {
-	const { data: games, error, isLoading } = useGames();
+interface Props {
+	genre: Genre | null;
+}
+
+const GamesGrid = ({ genre }: Props) => {
+	const { data: games, error, isLoading } = useGames(genre);
 
 	return (
 		<>
 			{error && <Text>{error}</Text>}
 			<SimpleGrid
-				columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
+				columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
 				spacing={3}
 				padding='10px'
 			>
