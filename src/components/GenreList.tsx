@@ -1,10 +1,29 @@
 import React from "react";
 import useGenres from "../hooks/useGenres";
-import { HStack, Image, List, ListItem, Text } from "@chakra-ui/react";
+import {
+	HStack,
+	Image,
+	List,
+	ListItem,
+	Skeleton,
+	Text,
+} from "@chakra-ui/react";
 import getCroppedImaheUrl from "../services/image-url";
 
 const GenreList = () => {
-	const { data: genres, error } = useGenres();
+	const { data: genres, error, isLoading } = useGenres();
+
+	if (error) return null;
+
+	if (isLoading)
+		return (
+			<Skeleton
+				height={"600px"}
+				borderRadius={10}
+				marginY={3}
+			/>
+		);
+
 	return (
 		<>
 			{error && <Text>{error}</Text>}

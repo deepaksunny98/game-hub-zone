@@ -6,7 +6,6 @@ import GameCardContainer from "./GameCardContainer";
 
 const GamesGrid = () => {
 	const { data: games, error, isLoading } = useGames();
-	console.log(games);
 
 	return (
 		<>
