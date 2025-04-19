@@ -1,4 +1,3 @@
-import React from "react";
 import useGenres, { Genre } from "../hooks/useGenres";
 import {
 	Button,

@@ -1,5 +1,4 @@
 import { HStack, Image } from "@chakra-ui/react";
-import React from "react";
 import logo from "../assets/logo.webp";
 import ColorModeToggle from "./ColorModeToggle";
 import SearchInput from "./SearchInput";
