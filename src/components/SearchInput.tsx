@@ -3,9 +3,10 @@ import { BsSearch } from "react-icons/bs";
 
 interface Props {
 	onSearch: (searchText: string) => void;
+	searchText: string;
 }
 
-const SearchInput = ({ onSearch }: Props) => {
+const SearchInput = ({ onSearch, searchText }: Props) => {
 	return (
 		<InputGroup>
 			<InputLeftElement
@@ -17,6 +18,7 @@ const SearchInput = ({ onSearch }: Props) => {
 				placeholder='Search gmaes...'
 				borderRadius={20}
 				onChange={(e) => onSearch(e.target.value)}
+				value={searchText}
 			/>
 		</InputGroup>
 	);

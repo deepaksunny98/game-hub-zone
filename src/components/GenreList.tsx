@@ -1,4 +1,5 @@
-import useGenres, { Genre } from "../hooks/useGenres";
+import useGenres from "../hooks/useGenres";
+import { Genre } from "../services/genreService";
 import {
 	Button,
 	HStack,
@@ -33,7 +34,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
 		<>
 			{error && <Text>{error}</Text>}
 			<List paddingY={2}>
-				{genres.map((genre) => (
+				{genres.results.map((genre) => (
 					<ListItem key={genre.id}>
 						<HStack mb={3}>
 							<Image
