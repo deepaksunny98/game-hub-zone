@@ -3,22 +3,11 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import GamesGrid from "./components/GamesGrid";
 import GenreList from "./components/GenreList";
-import { useState } from "react";
 import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
 
-export interface GameQuery {
-	genreId?: number;
-	platformId: number;
-	sortOrder: string;
-	searchText: string;
-	page_size: number;
-}
-
 function App() {
-	const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-
 	return (
 		<Grid
 			templateAreas={{
@@ -31,12 +20,7 @@ function App() {
 			}}
 		>
 			<GridItem area='nav'>
-				<NavBar
-					onSearch={(searchText: string) =>
-						setGameQuery({ ...gameQuery, searchText })
-					}
-					searchText={gameQuery.searchText}
-				/>
+				<NavBar />
 			</GridItem>
 			<Show above='lg'>
 				<GridItem
@@ -50,40 +34,21 @@ function App() {
 					>
 						Genres
 					</Heading>
-					<GenreList
-						onSelectGenre={(genre) =>
-							setGameQuery({ ...gameQuery, genreId: genre.id, searchText: "" })
-						}
-						selectedGenreId={gameQuery.genreId}
-					/>
+					<GenreList />
 				</GridItem>
 			</Show>
 			<GridItem area='main'>
 				<Box paddingLeft={2}>
-					<GameHeading gameQuery={gameQuery} />
+					<GameHeading />
 					<HStack
 						marginBottom={4}
 						spacing={5}
 					>
-						<PlatformSelector
-							onSelectPlatform={(platform) =>
-								setGameQuery({
-									...gameQuery,
-									platformId: platform.id,
-									searchText: "",
-								})
-							}
-							selectedPlatformId={gameQuery?.platformId}
-						/>
-						<SortSelector
-							onSortOrder={(sortOrder) =>
-								setGameQuery({ ...gameQuery, sortOrder, searchText: "" })
-							}
-							sortOrder={gameQuery?.sortOrder}
-						/>
+						<PlatformSelector />
+						<SortSelector />
 					</HStack>
 				</Box>
-				<GamesGrid gameQuery={{ ...gameQuery, page_size: 20 }} />
+				<GamesGrid />
 			</GridItem>
 		</Grid>
 	);
