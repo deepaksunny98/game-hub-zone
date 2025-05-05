@@ -1,13 +1,21 @@
 import { isRouteErrorResponse, useRouteError } from "react-router-dom";
+import NavBar from "./NavBar";
+import { Box, Heading, Text } from "@chakra-ui/react";
 
 const ErrorPage = () => {
 	const error = useRouteError();
-	console.error(error);
 
 	return (
 		<>
-			<h1>Oops...</h1>
-			<p>{isRouteErrorResponse(error) ? "Route Error" : "Unknown error"}</p>
+			<NavBar />
+			<Box padding={5}>
+				<Heading>Oops...</Heading>
+				<Text>
+					{isRouteErrorResponse(error)
+						? "The page does not exist"
+						: "Sorry, something went wrong"}
+				</Text>
+			</Box>
 		</>
 	);
 };
