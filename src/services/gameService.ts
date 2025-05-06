@@ -7,6 +7,8 @@ export interface Games {
 	parent_platforms: { platform: Platform }[];
 	metacritic: number;
 	rating_top: number;
+	slug: string;
+	description_raw: string;
 }
 
 export interface Platform {
