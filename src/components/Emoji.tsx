@@ -8,8 +8,6 @@ interface Props {
 }
 
 const Emoji = ({ rating }: Props) => {
-	console.log("d", rating);
-
 	const emojiMap: { [rating: number]: ImageProps } = {
 		3: { src: meh, alt: "meh", boxSize: "25px" },
 		4: { src: thumbsUp, alt: "recommanded", boxSize: "25px" },

@@ -17,7 +17,7 @@ const SearchInput = () => {
 				placeholder='Search gmaes...'
 				borderRadius={20}
 				onChange={(e) => setSearchText(e.target.value)}
-				value={searchText}
+				value={searchText || " "}
 			/>
 		</InputGroup>
 	);
