@@ -1,4 +1,3 @@
-import React from "react";
 import { Games } from "../services/gameService";
 import { SimpleGrid, Text } from "@chakra-ui/react";
 import CriticScore from "./CriticScore";

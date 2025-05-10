@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import useGameDetails from "../hooks/useGameDetails";
 import ExpandableText from "./ExpandableText";
 import GameAttributes from "./GameAttributes";
+import GameTrailer from "./GameTrailer";
 
 const GameDetailPage = () => {
 	const { game_name } = useParams();
@@ -20,6 +21,7 @@ const GameDetailPage = () => {
 			<Heading>{game?.name}</Heading>
 			<ExpandableText>{gameDescription}</ExpandableText>
 			<GameAttributes game={game} />
+			<GameTrailer game_name={game_name!} />
 		</Box>
 	);
 };
