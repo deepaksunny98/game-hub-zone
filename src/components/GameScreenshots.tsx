@@ -16,8 +16,6 @@ const GameScreenshots = ({ game_name }: Props) => {
 
 	if (error) throw error;
 
-	console.log(gameScreenshot);
-
 	return (
 		<SimpleGrid
 			columns={{ base: 1, md: 2 }}
