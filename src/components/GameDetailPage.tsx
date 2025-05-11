@@ -18,7 +18,10 @@ const GameDetailPage = () => {
 	const gameDescription = game?.description_raw;
 
 	return (
-		<SimpleGrid columns={2}>
+		<SimpleGrid
+			columns={{ base: 1, md: 2 }}
+			spacing={5}
+		>
 			<Box>
 				<Heading>{game?.name}</Heading>
 				<ExpandableText>{gameDescription}</ExpandableText>
