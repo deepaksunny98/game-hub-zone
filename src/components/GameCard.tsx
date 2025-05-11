@@ -13,7 +13,7 @@ interface Props {
 const GameCard = ({ game }: Props) => {
 	return (
 		<Link to={`/games/${game.slug}`}>
-			<Card>
+			<Card boxShadow={"none"}>
 				<Image src={getCroppedImaheUrl(game.background_image)} />
 				<CardBody>
 					<HStack
