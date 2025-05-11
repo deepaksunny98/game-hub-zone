@@ -17,7 +17,7 @@ const SearchInput = () => {
 				placeholder='Search games...'
 				borderRadius={20}
 				onChange={(e) => setSearchText(e.target.value)}
-				value={searchText || ""}
+				value={searchText}
 			/>
 		</InputGroup>
 	);
