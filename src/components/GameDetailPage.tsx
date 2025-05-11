@@ -1,5 +1,5 @@
-import { Box, Heading, SimpleGrid, Spinner } from "@chakra-ui/react";
-import { useParams } from "react-router-dom";
+import { Box, Button, Heading, SimpleGrid, Spinner } from "@chakra-ui/react";
+import { useNavigate, useParams } from "react-router-dom";
 import useGameDetails from "../hooks/useGameDetails";
 import ExpandableText from "./ExpandableText";
 import GameAttributes from "./GameAttributes";
@@ -8,6 +8,7 @@ import GameScreenshots from "./GameScreenshots";
 
 const GameDetailPage = () => {
 	const { game_name } = useParams();
+	const navigate = useNavigate();
 
 	const { data: game, error, isLoading } = useGameDetails(game_name!);
 
@@ -18,20 +19,31 @@ const GameDetailPage = () => {
 	const gameDescription = game?.description_raw;
 
 	return (
-		<SimpleGrid
-			columns={{ base: 1, md: 2 }}
-			spacing={5}
-		>
-			<Box>
-				<Heading>{game?.name}</Heading>
-				<ExpandableText>{gameDescription}</ExpandableText>
-				<GameAttributes game={game} />
-			</Box>
-			<Box>
-				<GameTrailer game_name={game_name!} />
-				<GameScreenshots game_name={game_name!} />
-			</Box>
-		</SimpleGrid>
+		<Box>
+			<Button
+				onClick={() => navigate("/")}
+				colorScheme='yellow'
+				fontWeight={"bold"}
+				paddingX={{ base: 5, md: 8 }}
+			>
+				Back
+			</Button>
+			<SimpleGrid
+				columns={{ base: 1, md: 2 }}
+				spacing={5}
+				marginTop={5}
+			>
+				<Box>
+					<Heading>{game?.name}</Heading>
+					<ExpandableText>{gameDescription}</ExpandableText>
+					<GameAttributes game={game} />
+				</Box>
+				<Box>
+					<GameTrailer game_name={game_name!} />
+					<GameScreenshots game_name={game_name!} />
+				</Box>
+			</SimpleGrid>
+		</Box>
 	);
 };
 
